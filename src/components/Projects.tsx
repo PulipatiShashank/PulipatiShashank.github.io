@@ -35,10 +35,19 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6 bg-muted/30">
+    <section id="projects" className="relative py-16 sm:py-20 px-4 sm:px-6">
+      <div
+        className="absolute inset-0 -z-10 opacity-60"
+        style={{
+          background:
+            "radial-gradient(800px 400px at 80% 10%, hsl(var(--accent) / 0.10), transparent 60%), radial-gradient(700px 400px at 10% 90%, hsl(var(--primary) / 0.10), transparent 60%)",
+        }}
+      />
       <div className="max-w-6xl mx-auto">
         <Reveal className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Featured Projects</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
+            Featured <span className="text-gradient">Projects</span>
+          </h2>
           <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-2">
             A showcase of my recent work and personal projects
           </p>
@@ -88,7 +97,7 @@ const Projects = () => {
               <CardContent className="p-4 sm:p-6 pt-0">
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="outline" className="text-xs px-2 py-1">
+                    <Badge key={tech} variant="outline" className="chip-aurora text-xs px-2.5 py-1 rounded-full">
                       {tech}
                     </Badge>
                   ))}

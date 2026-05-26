@@ -10,7 +10,9 @@ const Contact = () => {
     <section id="contact" className="py-16 sm:py-20 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <Reveal className="text-center mb-12 sm:mb-16 reveal-wrap">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Get In Touch</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
+            Get In <span className="text-gradient">Touch</span>
+          </h2>
           <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-2">
             Feel free to reach out for collaborations or just a friendly chat!
           </p>

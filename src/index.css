@@ -116,10 +116,33 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    /* Prevent zoom on iOS when focusing inputs */
+    -webkit-text-size-adjust: 100%;
   }
 
   html {
     scroll-behavior: smooth;
+    /* Better mobile scrolling */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Offset anchor jumps for fixed nav */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /* Touch-friendly tap targets */
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+    @apply flex items-center justify-center;
+  }
+
+  /* Improve text rendering on mobile */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 }
 
@@ -148,5 +171,184 @@
   
   .transition-bounce {
     transition: var(--transition-bounce);
+  }
+
+  /* Scroll-reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Scroll progress bar */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--hero-gradient);
+    z-index: 60;
+    transform-origin: 0 50%;
+    transition: transform 0.1s linear;
+    pointer-events: none;
+  }
+
+  /* Hero entry: staggered + smoother */
+  .hero-line {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-line { opacity: 1; transform: none; animation: none; }
+  }
+  @keyframes heroIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Safe fade-in animation that doesn't hide content */
+  .animate-slide-up {
+    animation: slideUpSafe 0.8s ease-out forwards;
+    /* Start visible, then enhance with animation */
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Only apply initial hidden state if animations are enabled */
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-slide-up {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Touch-friendly button states */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Better mobile card hover states */
+  @media (hover: none) {
+    .card-glass:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .hover\:scale-105:hover {
+      transform: none;
+    }
+    
+    .hover\:scale-110:hover {
+      transform: none;
+    }
+  }
+
+  /* Active states for mobile */
+  .card-glass:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
+  button:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+}
+
+@layer utilities {
+  /* Mobile-specific utilities */
+  .mobile-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .mobile-text-responsive {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+
+  .mobile-heading-responsive {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  /* Safe area for mobile devices with notches */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Keyframe animations */
+@keyframes slideUpSafe {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Mobile-specific media queries */
+@media (max-width: 640px) {
+  /* Reduce motion for better mobile performance */
+  .animate-float {
+    animation: none;
+  }
+  
+  /* Better mobile spacing */
+  .mobile-stack > * + * {
+    margin-top: 1rem;
+  }
+  
+  /* Ensure images don't break layout on mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-up,
+  .animate-float {
+    animation: none;
+  }
+  
+  .transition-smooth,
+  .transition-bounce {
+    transition: none;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .card-glass {
+    backdrop-filter: blur(10px);
   }
 }

@@ -3,54 +3,66 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
-        </div>
+    <section id="contact" className="py-16 sm:py-20 px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto">
+        <Reveal className="text-center mb-12 sm:mb-16 reveal-wrap">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Get In Touch</h2>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-2">
+            Feel free to reach out for collaborations or just a friendly chat!
+          </p>
+        </Reveal>
         
-        <div className="flex justify-center px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
           {/* Contact Info */}
-          <div className="space-y-6">
-            <Card className="card-glass hover:glow-primary transition-smooth">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-primary" />
-                  Email
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">pulipatishashank@gmail.com</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="card-glass hover:glow-primary transition-smooth">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-primary" />
-                  Phone
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">+91 9390632330</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="card-glass hover:glow-primary transition-smooth">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <MapPin className="h-5 w-5 text-primary" />
-                  Location
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Adoni, Kurnool, India</p>
-              </CardContent>
-            </Card>
-          </div>
+          <Card className="card-glass hover:glow-primary hover:-translate-y-1 transition-smooth">
+            <CardHeader className="pb-3">
+              <CardTitle className="flex items-center gap-3 text-lg">
+                <Mail className="h-5 w-5 text-primary flex-shrink-0" />
+                <span>Email</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <a 
+                href="mailto:pulipatishashank@gmail.com" 
+                className="text-muted-foreground hover:text-foreground transition-colors text-sm sm:text-base break-all"
+              >
+                pulipatishashank@gmail.com
+              </a>
+            </CardContent>
+          </Card>
+          
+          <Card className="card-glass hover:glow-primary hover:-translate-y-1 transition-smooth">
+            <CardHeader className="pb-3">
+              <CardTitle className="flex items-center gap-3 text-lg">
+                <Phone className="h-5 w-5 text-primary flex-shrink-0" />
+                <span>Phone</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <a 
+                href="tel:+919390632330" 
+                className="text-muted-foreground hover:text-foreground transition-colors text-sm sm:text-base"
+              >
+                +91 9390632330
+              </a>
+            </CardContent>
+          </Card>
+          
+          <Card className="card-glass hover:glow-primary transition-smooth sm:col-span-2 lg:col-span-1">
+            <CardHeader className="pb-3">
+              <CardTitle className="flex items-center gap-3 text-lg">
+                <MapPin className="h-5 w-5 text-primary flex-shrink-0" />
+                <span>Location</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="text-muted-foreground text-sm sm:text-base">Adoni, Kurnool, India</p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

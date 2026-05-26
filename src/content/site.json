@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "name": "Shashank",
+    "tagline": "I build things at the intersection of",
+    "roles": [
+      "Generative AI Developer",
+      "Full-Stack Engineer",
+      "Cloud & AWS Builder",
+      "Python Automator"
+    ],
+    "cvUrl": "https://drive.google.com/file/d/1Y6c2mRF_DRISmn1ENYabFTtiUep0R1_T/view?usp=sharing"
+  },
+  "about": {
+    "intro": "Software Engineer with 1.5+ years of experience in building and maintaining cloud-based applications, automating tasks using Python, and developing full-stack solutions. Hands-on experience building GenAI-powered tools using OpenAI APIs. Strong foundation in prompt engineering, full-stack development, and cloud infrastructure. Passionate about creating intelligent, scalable systems that bridge traditional software with AI innovation.",
+    "journey": [
+      "With 1.5+ years of experience in software development, I specialize in building cloud-based, full-stack applications that integrate intelligent automation and real-world functionality. My work focuses on delivering scalable, maintainable systems using technologies like Python, JavaScript, AWS, and SQL.",
+      "I have hands-on experience developing GenAI-powered tools using OpenAI APIs, with a strong foundation in prompt engineering, backend services, and cloud infrastructure. I'm passionate about bridging traditional software with AI innovation to create smarter digital solutions."
+    ],
+    "skills": [
+      "Python", "SQL", "HTML", "CSS", "JavaScript", "Amazon Web Services",
+      "Lambda", "CloudFormation", "CloudWatch", "EC2", "DynamoDB", "RDS",
+      "SQS", "IAM", "S3", "Git", "Jira", "VS Code", "Eclipse", "IntelliJ",
+      "Maven", "Postman", "Linux", "PostgreSQL"
+    ]
+  },
+  "contact": {
+    "email": "pulipatishashank@gmail.com",
+    "phone": "+91 9390632330",
+    "location": "Adoni, Kurnool, India"
+  },
+  "social": {
+    "github": "https://github.com/PulipatiShashank/",
+    "linkedin": "https://www.linkedin.com/in/pulipati-shashank-3b9341288/"
+  }
+}

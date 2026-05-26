@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react";
 import { Github, Linkedin, Mail, Download, ArrowDown, Sparkles } from "lucide-react";
-
-const ROLES = [
-  "Generative AI Developer",
-  "Full-Stack Engineer",
-  "Cloud & AWS Builder",
-  "Python Automator",
-];
+import { siteContent } from "@/content";
 
 const Hero = () => {
+  const { hero, contact, social } = siteContent;
+  const ROLES = hero.roles;
   const [roleIdx, setRoleIdx] = useState(0);
 
   useEffect(() => {
+    if (ROLES.length <= 1) return;
     const id = setInterval(() => setRoleIdx((i) => (i + 1) % ROLES.length), 2400);
     return () => clearInterval(id);
-  }, []);
+  }, [ROLES.length]);
 
   return (
     <section
@@ -56,14 +53,14 @@ const Hero = () => {
           style={{ animationDelay: "0.05s" }}
         >
           <span className="text-white/90">Hi, I'm </span>
-          <span className="text-gradient-animated">Shashank</span>
+          <span className="text-gradient-animated">{hero.name}</span>
         </h1>
 
         <p
           className="hero-line text-base sm:text-xl md:text-2xl mb-2 text-white/80 max-w-2xl mx-auto"
           style={{ animationDelay: "0.2s" }}
         >
-          I build things at the intersection of
+          {hero.tagline}
         </p>
 
         <div
@@ -84,7 +81,7 @@ const Hero = () => {
           style={{ animationDelay: "0.35s" }}
         >
           <a
-            href="https://drive.google.com/file/d/1Y6c2mRF_DRISmn1ENYabFTtiUep0R1_T/view?usp=sharing"
+            href={hero.cvUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-aurora rounded-xl px-6 py-3 text-base sm:text-lg font-medium inline-flex items-center gap-2"
@@ -105,7 +102,7 @@ const Hero = () => {
           style={{ animationDelay: "0.5s" }}
         >
           <a
-            href="https://github.com/PulipatiShashank/"
+            href={social.github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -114,7 +111,7 @@ const Hero = () => {
             <Github className="h-6 w-6 sm:h-7 sm:w-7" />
           </a>
           <a
-            href="https://www.linkedin.com/in/pulipati-shashank-3b9341288/"
+            href={social.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -123,7 +120,7 @@ const Hero = () => {
             <Linkedin className="h-6 w-6 sm:h-7 sm:w-7" />
           </a>
           <a
-            href="mailto:pulipatishashank@gmail.com"
+            href={`mailto:${contact.email}`}
             aria-label="Email"
             className="text-white/70 hover:text-white hover:scale-110 transition-smooth"
           >
